@@ -1,0 +1,41 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.env.*
+venv/
+.venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Logs
+*.log
+
+# Mac system junk
+.AppleDouble
+.LSOverride
+
+# Temp files
+*.tmp
+*.swp
+
+# Database files (if any local)
+*.sqlite3
+*.db
+
+# Backup files
+*.save
+*.bak
+
+# Python build
+build/
+dist/
+*.egg-info/
