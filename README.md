@@ -1,37 +1,197 @@
-# FastAPI Authentication & Notes API
+FastAPI Backend API — JWT Authentication & Architecture
 
-A production-ready backend API built using **FastAPI**, featuring:
+A production-ready REST API built with FastAPI (Python) featuring JWT authentication, secure password hashing, clean project structure, and modern backend best practices. This project is designed as a real-world backend service suitable for learning, portfolios, and production use.
 
-- JWT Authentication
-- Secure Password Hashing
-- OAuth2 Login Flow
-- User-based Authorization
-- Notes CRUD API
-- Clean Modular Architecture
-- MySQL Database Integration
+⸻
+
+Features
+	•	User Registration & Login
+	•	JWT Authentication (Access + Refresh Tokens)
+	•	Secure Password Hashing (Argon2 / Bcrypt)
+	•	Protected Endpoints
+	•	Dependency Injection
+	•	Clean Project Structure
+	•	SQL Database Integration (PostgreSQL / MySQL / SQLite)
+	•	SQLAlchemy ORM
+	•	Alembic Migrations
+	•	Swagger (OpenAPI) Documentation
+
+⸻
+
+Tech Stack
+	•	Python 3.10+
+	•	FastAPI
+	•	SQLAlchemy
+	•	Alembic
+	•	Pydantic
+	•	JWT (python-jose)
+	•	Uvicorn
+	•	PostgreSQL / MySQL / SQLite
+
+⸻
+
+Authentication Flow
+
+Visual Flow Diagram
+
+Client → Login API → JWT Issued → Token Stored
+      ↓
+Protected Request → Token Sent → JWT Validation → User Loaded → Access Granted
+
+Register → Login → Generate JWT → Client stores token →
+Send token with each request → Server validates → Access granted
+
+
+⸻
+
+API Endpoints
+
+Auth
+
+Method	Endpoint	Description
+POST	/auth/register	Register new user
+POST	/auth/login	Login and receive JWT
+POST	/auth/refresh	Refresh access token
+
+User
+
+Method	Endpoint	Access
+GET	/users/me	Authenticated
+
+
+⸻
+
+Security Implementation
+	•	JWT-based stateless authentication
+	•	Password hashing using Argon2 / Bcrypt
+	•	Token-based request authorization
+	•	Protected routes using FastAPI dependencies
+
+⸻
+
+⚙️ Setup Instructions
+
+1️⃣ Clone Repository
+
+git clone <repo-url>
+cd project
+
+2️⃣ Create Virtual Environment
+
+python -m venv venv
+source venv/bin/activate  # macOS/Linux
+venv\\Scripts\\activate   # Windows
+
+3️⃣ Install Dependencies
+
+pip install -r requirements.txt
+
+4️⃣ Configure Environment Variables
+
+Create .env file:
+
+DATABASE_URL=sqlite:///./app.db
+SECRET_KEY=your_secret_key
+ALGORITHM=HS256
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+
+
+⸻
+
+5️⃣ Run Server
+
+uvicorn app.main:app --reload
+
+
+⸻
+
+📄 Swagger API Docs
+
+Once running, open:
+
+http://127.0.0.1:8000/docs
+
+
+⸻
+
+🧠 Project Structure
+
+🏗 Architecture Overview
+
+        Client
+           ↓
+        FastAPI
+           ↓
+    ┌──────────────┐
+    │   Routers    │
+    └──────────────┘
+           ↓
+    ┌──────────────┐
+    │  Services    │
+    └──────────────┘
+           ↓
+    ┌──────────────┐
+    │ Repositories │
+    └──────────────┘
+           ↓
+        Database
+
+📁 Folder Structure
+
+
+
+app/
+├── main.py
+├── core/
+│    ├── config.py
+│    └── security.py
+├── api/
+│    ├── routes
+│    └── deps.py
+├── models/
+├── schemas/
+├── services/
+└── db/
 
 ---
 
-## 🚀 Features
+## 🧪 Sample Request
 
-- User registration & login
-- JWT-based authentication
-- Protected API routes
-- Create, read, update, delete personal notes
-- Secure password hashing using bcrypt
-- Scalable project structure
+### Login
+```json
+POST /auth/login
+{
+  "email": "test@mail.com",
+  "password": "123456"
+}
 
----
+Response:
 
-## 🛠 Tech Stack
+{
+  "access_token": "<jwt>",
+  "token_type": "bearer"
+}
 
-- **Backend Framework:** FastAPI  
-- **Language:** Python  
-- **Database:** MySQL  
-- **ORM:** SQLAlchemy  
-- **Authentication:** JWT + OAuth2  
-- **Security:** Passlib (bcrypt)
 
----
+⸻
 
-## 📂 Project Structure
+💡 Future Improvements
+	•	Role-based authorization
+	•	Email verification
+	•	OAuth login (Google / GitHub)
+	•	Docker deployment
+	•	Redis caching
+	•	Rate limiting
+
+⸻
+
+👨‍💻 Author
+
+Ayush
+Backend Developer | Python | FastAPI | Java | Spring Boot
+
+⸻
+
+⭐ If you like this project
+
+Give it a ⭐ on GitHub — it motivates me to build more!
