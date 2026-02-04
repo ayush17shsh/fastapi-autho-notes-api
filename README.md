@@ -109,7 +109,7 @@ uvicorn app.main:app --reload
 
 Once running, open:
 
-http://127.0.0.1:8000/docs
+http://127.0.0.1:8005/docs
 
 
 ⸻
