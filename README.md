@@ -102,16 +102,6 @@ ACCESS_TOKEN_EXPIRE_MINUTES=30
 
 uvicorn app.main:app --reload
 
-
-⸻
-
-📄 Swagger API Docs
-
-Once running, open:
-
-http://127.0.0.1:8005/docs
-
-
 ⸻
 
 🧠 Project Structure
